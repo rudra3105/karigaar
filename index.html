@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karigaar — Run Your Service Business Smarter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg2: #F2F1EC;
+  --bg3: #ECEAE2;
+  --white: #FFFFFF;
+  --accent: #E8470A;
+  --accent-light: #FFF0EB;
+  --accent2: #FF6B35;
+  --dark: #1A1A1A;
+  --dark2: #2D2D2D;
+  --mid: #6B6860;
+  --light: #9B9890;
+  --border: #E2E0D8;
+  --border2: #D4D2CA;
+  --green: #1A7A4A;
+  --green-bg: #EBF7F1;
+  --gold: #C9860A;
+  --gold-bg: #FDF6E3;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.09);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(250,250,247,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 60px;
+  box-shadow: var(--shadow-sm);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; font-size: 1.6rem;
+  color: var(--dark); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+.nav-links a {
+  color: var(--mid); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--accent) !important;
+  color: #fff !important;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  transition: all 0.2s !important;
+  box-shadow: 0 4px 12px rgba(232,71,10,0.25);
+}
+.nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,71,10,0.3) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding: 140px 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-shape {
+  position: absolute; top: -100px; right: -200px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,71,10,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-bg-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--border2) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-light);
+  border: 1px solid rgba(232,71,10,0.15);
+  color: var(--accent);
+  padding: 7px 16px; border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.8);} }
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line span {
+  display: block;
+  opacity: 0; transform: translateY(100%);
+  animation: slideUp 0.85s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+.hero-title .line:nth-child(1) span { animation-delay: 0.35s; }
+.hero-title .line:nth-child(2) span { animation-delay: 0.5s; }
+.hero-title .line:nth-child(3) span { animation-delay: 0.65s; }
+.hero-title .orange { color: var(--accent); }
+@keyframes slideUp { to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+
+.hero-sub {
+  font-size: 1.05rem; color: var(--mid);
+  max-width: 480px; line-height: 1.75;
+  margin-bottom: 36px; font-weight: 400;
+  opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
+}
+.hero-actions {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.7s ease 1s forwards;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  padding: 15px 32px; border-radius: 10px;
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+  box-shadow: 0 6px 20px rgba(232,71,10,0.28);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,71,10,0.35); }
+.btn-primary:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+.btn-ghost {
+  background: var(--white); color: var(--dark);
+  padding: 15px 28px; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--border2);
+  transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 28px;
+  margin-top: 44px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+  opacity: 0; animation: fadeUp 0.7s ease 1.2s forwards;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; color: var(--mid); font-weight: 500;
+}
+
+/* HERO RIGHT — PHONE MOCKUP */
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; justify-content: center; align-items: center;
+  opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+}
+.phone-wrap {
+  position: relative;
+  filter: drop-shadow(0 32px 64px rgba(0,0,0,0.14));
+}
+.phone-frame {
+  width: 280px;
+  background: var(--dark);
+  border-radius: 36px;
+  padding: 12px;
+}
+.phone-screen {
+  background: var(--white);
+  border-radius: 28px;
+  overflow: hidden;
+}
+.phone-status {
+  background: var(--dark); color: #fff;
+  padding: 10px 20px 6px;
+  display: flex; justify-content: space-between;
+  font-size: 0.65rem; font-weight: 600;
+}
+.phone-header {
+  background: var(--accent); color: #fff;
+  padding: 14px 18px;
+}
+.phone-header-title { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 700; }
+.phone-header-sub { font-size: 0.65rem; opacity: 0.85; margin-top: 2px; }
+.phone-body { padding: 14px; background: var(--bg); }
+.phone-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.phone-stat {
+  background: var(--white); border-radius: 10px; padding: 12px;
+  border: 1px solid var(--border);
+}
+.phone-stat-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+.phone-stat-label { font-size: 0.6rem; color: var(--mid); margin-top: 2px; }
+.phone-section-label { font-size: 0.65rem; font-weight: 600; color: var(--mid); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+.phone-job {
+  background: var(--white); border-radius: 8px; padding: 10px 12px;
+  border: 1px solid var(--border); margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.phone-job-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.phone-job-text { flex: 1; }
+.phone-job-name { font-size: 0.68rem; font-weight: 600; color: var(--dark); }
+.phone-job-sub { font-size: 0.6rem; color: var(--light); margin-top: 1px; }
+.phone-chip { font-size: 0.58rem; font-weight: 600; padding: 3px 8px; border-radius: 100px; white-space: nowrap; }
+.chip-green { background: var(--green-bg); color: var(--green); }
+.chip-orange { background: var(--accent-light); color: var(--accent); }
+.chip-gold { background: var(--gold-bg); color: var(--gold); }
+
+/* Floating cards */
+.float-card {
+  position: absolute;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  animation: float 4s ease-in-out infinite;
+  min-width: 140px;
+}
+.float-card-1 { right: -70px; top: 60px; animation-delay: 0s; }
+.float-card-2 { left: -60px; bottom: 80px; animation-delay: 1.5s; }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+.float-card-label { font-size: 0.65rem; color: var(--mid); font-weight: 500; margin-bottom: 4px; }
+.float-card-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); }
+.float-card-sub { font-size: 0.62rem; color: var(--green); font-weight: 600; margin-top: 2px; }
+
+/* ── HOW IT WORKS ── */
+.how { background: var(--white); padding: 100px 60px; }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-tag {
+  display: inline-block;
+  background: var(--accent-light); color: var(--accent);
+  padding: 5px 16px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  line-height: 1.15; letter-spacing: -0.02em;
+  color: var(--dark); max-width: 560px; margin: 0 auto 16px;
+}
+.section-sub {
+  font-size: 1rem; color: var(--mid);
+  max-width: 500px; margin: 0 auto;
+  line-height: 1.7;
+}
+
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.step-card {
+  background: var(--bg); border-radius: 20px;
+  padding: 40px 36px; position: relative;
+  border: 1.5px solid var(--border);
+  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+  overflow: hidden;
+}
+.step-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transition: transform 0.4s ease;
+  transform-origin: left;
+}
+.step-card:hover::after { transform: scaleX(1); }
+.step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(232,71,10,0.15); }
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 800;
+  color: rgba(232,71,10,0.08);
+  line-height: 1; margin-bottom: 20px;
+}
+.step-icon { font-size: 2rem; margin-bottom: 16px; }
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.2rem;
+  color: var(--dark); margin-bottom: 10px;
+}
+.step-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+/* ── PROBLEMS ── */
+.problems { background: var(--bg2); padding: 100px 60px; }
+.problems-intro { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+.problems-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+.problem-item {
+  background: var(--white); border-radius: 16px;
+  padding: 28px 28px; border: 1.5px solid var(--border);
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.problem-item:hover { border-color: rgba(232,71,10,0.2); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.problem-emoji { font-size: 1.7rem; flex-shrink: 0; margin-top: 2px; }
+.problem-title { font-weight: 700; font-size: 0.95rem; color: var(--dark); margin-bottom: 6px; }
+.problem-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.65; }
+.problems-cta { text-align: center; margin-top: 48px; }
+.problems-cta p { font-size: 1rem; color: var(--dark); font-weight: 600; margin-bottom: 20px; }
+
+/* ── FEATURES ── */
+.features { background: var(--white); padding: 100px 60px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+.feat-card {
+  background: var(--bg); border-radius: 18px; padding: 36px 30px;
+  border: 1.5px solid var(--border);
+  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+.feat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: rgba(232,71,10,0.2); }
+.feat-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 22px;
+}
+.feat-title { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 10px; }
+.feat-desc { font-size: 0.875rem; color: var(--mid); line-height: 1.7; }
+
+/* ── VERTICALS ── */
+.verticals { background: var(--bg2); padding: 100px 60px; }
+.verticals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+.vertical-card {
+  background: var(--white); border-radius: 18px; padding: 36px 24px;
+  border: 1.5px solid var(--border); text-align: center;
+  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+.vertical-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(232,71,10,0.2); }
+.vertical-emoji { font-size: 2.5rem; display: block; margin-bottom: 16px; }
+.vertical-name { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 8px; }
+.vertical-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
+/* ── PRICING ── */
+.pricing { background: var(--white); padding: 100px 60px; }
+.pricing-note {
+  text-align: center; margin-bottom: 56px;
+  font-size: 0.9rem; color: var(--mid);
+}
+.pricing-note strong { color: var(--dark); }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; max-width: 1020px; margin: 0 auto;
+  align-items: start;
+}
+
+.price-card {
+  background: var(--bg); border-radius: 22px;
+  border: 2px solid var(--border);
+  padding: 40px 36px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.price-card:hover { box-shadow: var(--shadow-md); }
+.price-card.featured {
+  background: var(--dark2); border-color: var(--dark2);
+  box-shadow: var(--shadow-lg);
+}
+.price-card.featured:hover { transform: translateY(-4px); }
+
+.popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: #fff;
+  padding: 5px 20px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(232,71,10,0.35);
+}
+
+.plan-name {
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 4px;
+}
+.price-card.featured .plan-name { color: rgba(255,255,255,0.45); }
+
+.plan-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--dark); margin-bottom: 24px; line-height: 1.3;
+}
+.price-card.featured .plan-tagline { color: #fff; }
+
+.plan-price-wrap { display: flex; align-items: baseline; gap: 2px; margin-bottom: 6px; }
+.plan-currency { font-size: 1.2rem; font-weight: 600; color: var(--accent); line-height: 1; }
+.plan-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 800;
+  color: var(--dark); line-height: 1;
+}
+.price-card.featured .plan-amount { color: #fff; }
+.plan-per { font-size: 0.85rem; color: var(--mid); margin-left: 4px; }
+.price-card.featured .plan-per { color: rgba(255,255,255,0.4); }
+
+.plan-billing { font-size: 0.78rem; color: var(--mid); margin-bottom: 14px; }
+.price-card.featured .plan-billing { color: rgba(255,255,255,0.35); }
+
+.plan-team {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-light); color: var(--accent);
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600; margin-bottom: 24px;
+}
+.price-card.featured .plan-team { background: rgba(232,71,10,0.2); color: #FF9070; }
+
+.plan-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+.price-card.featured .plan-divider { border-color: rgba(255,255,255,0.1); }
+
+.plan-best-for {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.price-card.featured .plan-best-for { color: rgba(255,255,255,0.35); }
+
+.plan-best-desc {
+  font-size: 0.875rem; color: var(--mid);
+  line-height: 1.65; margin-bottom: 24px;
+  padding: 14px 16px; background: rgba(0,0,0,0.03); border-radius: 10px;
+}
+.price-card.featured .plan-best-desc { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.65); }
+
+.plan-features-label {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;
+}
+.price-card.featured .plan-features-label { color: rgba(255,255,255,0.35); }
+
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 28px; }
+.plan-feature {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.875rem; color: var(--dark2); line-height: 1.5;
+}
+.price-card.featured .plan-feature { color: rgba(255,255,255,0.8); }
+.plan-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green-bg); flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; color: var(--green); font-weight: 700;
+}
+.price-card.featured .plan-check { background: rgba(34,197,94,0.2); color: #4ade80; }
+
+.plan-btn {
+  display: block; text-align: center;
+  padding: 14px; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  transition: all 0.25s; border: 1.5px solid var(--border2);
+  background: var(--white); color: var(--dark);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-top: auto;
+}
+.plan-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.price-card.featured .plan-btn {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(232,71,10,0.3);
+}
+.price-card.featured .plan-btn:hover { background: var(--accent2); border-color: var(--accent2); }
+
+.pricing-footer {
+  text-align: center; margin-top: 48px;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+  padding: 24px 32px;
+  background: var(--green-bg); border-radius: 14px;
+  border: 1px solid rgba(26,122,74,0.15);
+}
+.pricing-footer p { font-size: 0.9rem; color: var(--green); font-weight: 500; line-height: 1.6; }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--dark); padding: 100px 60px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-bg {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse, rgba(232,71,10,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: #fff; max-width: 640px; margin: 0 auto 20px;
+  position: relative; z-index: 1;
+}
+.cta-title .orange { color: var(--accent2); }
+.cta-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.5);
+  max-width: 420px; margin: 0 auto 44px;
+  line-height: 1.75; position: relative; z-index: 1;
+}
+.cta-form {
+  display: flex; gap: 12px; max-width: 460px;
+  margin: 0 auto; flex-wrap: wrap; justify-content: center;
+  position: relative; z-index: 1;
+}
+.cta-input {
+  flex: 1; min-width: 220px;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  color: #fff; padding: 15px 22px; border-radius: 10px;
+  font-size: 0.9rem; font-family: 'Plus Jakarta Sans', sans-serif;
+  outline: none; transition: border-color 0.2s;
+}
+.cta-input::placeholder { color: rgba(255,255,255,0.3); }
+.cta-input:focus { border-color: rgba(232,71,10,0.5); }
+.cta-note { font-size: 0.78rem; color: rgba(255,255,255,0.28); margin-top: 18px; position: relative; z-index: 1; }
+#successMsg { margin-top: 18px; font-size: 0.9rem; position: relative; z-index: 1; }
+
+/* ── FOOTER ── */
+footer {
+  background: #111; padding: 44px 60px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.3rem; color: #fff; }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.75); }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.23,1,0.32,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; gap: 48px; }
+  .hero-right { order: -1; }
+  .phone-wrap { transform: scale(0.85); }
+  .float-card { display: none; }
+  .how, .problems, .features, .verticals, .pricing, .cta-section { padding: 70px 24px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .problems-list { grid-template-columns: 1fr; max-width: 100%; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .verticals-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  footer { padding: 36px 24px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+}
+@media (max-width: 560px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .verticals-grid { grid-template-columns: 1fr; }
+  .hero-trust { gap: 14px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── WHATSAPP & EMAIL BUTTONS ── */
+.cta-buttons {
+  display: flex; gap: 14px; justify-content: center;
+  flex-wrap: wrap; position: relative; z-index: 1;
+}
+.btn-whatsapp {
+  background: #25D366; color: #fff;
+  padding: 15px 32px; border-radius: 10px;
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.btn-whatsapp:hover { background: #20ba59; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.45); }
+.btn-email {
+  background: rgba(255,255,255,0.08); color: #fff;
+  padding: 15px 28px; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.btn-email:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.35); transform: translateY(-2px); }
+
+/* ── FLOATING WHATSAPP BUTTON ── */
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+  animation: waPulse 2.5s ease-in-out infinite;
+}
+.whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
+.whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5), 0 0 0 0 rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 24px rgba(37,211,102,0.5), 0 0 0 12px rgba(37,211,102,0); }
+}
+.whatsapp-float-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--dark); color: #fff;
+  padding: 6px 12px; border-radius: 8px;
+  font-size: 0.78rem; font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.whatsapp-float-tooltip::after {
+  content: '';
+  position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+  border: 5px solid transparent; border-left-color: var(--dark);
+}
+.whatsapp-float:hover .whatsapp-float-tooltip { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Karig<span>aa</span>r</a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="nav-cta">Get Early Access</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-dots"></div>
+  <div class="hero-bg-shape"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Now in Early Access · Gujarat
+    </div>
+    <h1 class="hero-title">
+      <div class="line"><span>Manage Your</span></div>
+      <div class="line"><span>Service Business</span></div>
+      <div class="line"><span class="orange">Without Chaos.</span></div>
+    </h1>
+    <p class="hero-sub">
+      Karigaar is a simple mobile app and web panel for AC, electrical, fire safety, and garage businesses. Schedule jobs, track your team, send bills — all from your phone. No technical knowledge needed.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn-primary">
+        Book a Free Demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#how" class="btn-ghost">See How It Works</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">✅ No technical skills needed</div>
+      <div class="trust-item">📱 Works on any phone</div>
+      <div class="trust-item">🇮🇳 Made in Gujarat</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="phone-wrap">
+      <div class="float-card float-card-1">
+        <div class="float-card-label">Today's Revenue</div>
+        <div class="float-card-value">₹18,400</div>
+        <div class="float-card-sub">↑ 24% vs yesterday</div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="float-card-label">AMC Renewals</div>
+        <div class="float-card-value">3 Due Soon</div>
+        <div class="float-card-sub">Auto-reminders sent ✓</div>
+      </div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span>9:41</span><span>●●● ▌</span>
+          </div>
+          <div class="phone-header">
+            <div class="phone-header-title">Good morning, Raj! 👋</div>
+            <div class="phone-header-sub">7 jobs scheduled today</div>
+          </div>
+          <div class="phone-body">
+            <div class="phone-stat-row">
+              <div class="phone-stat">
+                <div class="phone-stat-num">24</div>
+                <div class="phone-stat-label">Jobs This Week</div>
+              </div>
+              <div class="phone-stat">
+                <div class="phone-stat-num">₹84k</div>
+                <div class="phone-stat-label">Collected</div>
+              </div>
+            </div>
+            <div class="phone-section-label">Today's Jobs</div>
+            <div class="phone-job">
+              <div class="phone-job-dot" style="background:#22c55e"></div>
+              <div class="phone-job-text">
+                <div class="phone-job-name">AC Service — Sharma House</div>
+                <div class="phone-job-sub">Rahul · 10:00 AM</div>
+              </div>
+              <div class="phone-chip chip-green">Done</div>
+            </div>
+            <div class="phone-job">
+              <div class="phone-job-dot" style="background:var(--accent)"></div>
+              <div class="phone-job-text">
+                <div class="phone-job-name">Fire Check — Patel Shop</div>
+                <div class="phone-job-sub">Amit · 12:30 PM</div>
+              </div>
+              <div class="phone-chip chip-orange">Live</div>
+            </div>
+            <div class="phone-job">
+              <div class="phone-job-dot" style="background:var(--gold)"></div>
+              <div class="phone-job-text">
+                <div class="phone-job-name">Electrical — Mehta Office</div>
+                <div class="phone-job-sub">Vijay · 3:00 PM</div>
+              </div>
+              <div class="phone-chip chip-gold">Soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header reveal">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">3 simple steps to a better business</h2>
+    <p class="section-sub">If you can use WhatsApp, you can use Karigaar. No training. No tech skills needed.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon">📲</div>
+      <div class="step-title">Download & Set Up in 10 Minutes</div>
+      <p class="step-desc">Install Karigaar on your phone. Add your business name, your team members, and your services. Done. No training required — it's as simple as setting up a new phone.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Assign Jobs & Watch Your Team</div>
+      <p class="step-desc">When a customer calls, create a job in seconds and assign it to your technician. See live updates as they start, work on, and complete each job — from your phone.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <div class="step-icon">🧾</div>
+      <div class="step-title">Bill Instantly & Get Paid Faster</div>
+      <p class="step-desc">Job done? Generate a professional GST bill in one tap. Send it on WhatsApp immediately. See who paid and who hasn't — no register, no manual follow-up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="problems" id="problems">
+  <div class="problems-intro reveal">
+    <div class="section-tag">Does This Sound Like You?</div>
+    <h2 class="section-title">Problems every service business owner knows</h2>
+    <p class="section-sub">If even one of these feels familiar, Karigaar was built for you.</p>
+  </div>
+  <div class="problems-list">
+    <div class="problem-item reveal">
+      <div class="problem-emoji">😤</div>
+      <div>
+        <div class="problem-title">"I don't know where my technicians are right now"</div>
+        <p class="problem-desc">You call, they don't pick up. You have no idea if the job is done or the customer is still waiting.</p>
+      </div>
+    </div>
+    <div class="problem-item reveal">
+      <div class="problem-emoji">📓</div>
+      <div>
+        <div class="problem-title">"I still make bills in a register or on paper"</div>
+        <p class="problem-desc">Manual bills get lost, take time, and are impossible to track — especially at 20+ jobs per day.</p>
+      </div>
+    </div>
+    <div class="problem-item reveal">
+      <div class="problem-emoji">😰</div>
+      <div>
+        <div class="problem-title">"My customer's AMC expired and I didn't even know"</div>
+        <p class="problem-desc">You lost a renewal because nobody reminded you. Your competitor got that business, not you.</p>
+      </div>
+    </div>
+    <div class="problem-item reveal">
+      <div class="problem-emoji">💸</div>
+      <div>
+        <div class="problem-title">"I have unpaid bills but no system to follow up"</div>
+        <p class="problem-desc">Customers owe you money but you forget who, how much, and when to ask. Your cash flow suffers every month.</p>
+      </div>
+    </div>
+    <div class="problem-item reveal">
+      <div class="problem-emoji">📱</div>
+      <div>
+        <div class="problem-title">"All my job information is scattered across WhatsApp"</div>
+        <p class="problem-desc">Finding a past job means scrolling through 300 messages. Customer history is impossible to track.</p>
+      </div>
+    </div>
+    <div class="problem-item reveal">
+      <div class="problem-emoji">🌀</div>
+      <div>
+        <div class="problem-title">"If I'm busy, my whole business falls apart"</div>
+        <p class="problem-desc">Everything depends on you being available 24/7. There is no system — only you, always on call.</p>
+      </div>
+    </div>
+  </div>
+  <div class="problems-cta reveal">
+    <p>Karigaar solves all of this — in one simple app.</p>
+    <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn-primary">Show Me How →</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-header reveal">
+    <div class="section-tag">What You Get</div>
+    <h2 class="section-title">Everything your service business needs</h2>
+    <p class="section-sub">Simple tools that solve your real daily problems — not complicated software that needs an IT expert.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">📋</div>
+      <div class="feat-title">Digital Job Cards</div>
+      <p class="feat-desc">Create a new job in under 30 seconds. Assign it to any technician with one tap. Get notified the moment it's completed. No WhatsApp coordination needed.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">🔔</div>
+      <div class="feat-title">AMC Renewal Alerts</div>
+      <p class="feat-desc">Karigaar automatically reminds you 30 days before any customer's contract expires. Never lose a renewal because of forgetfulness again.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">🧾</div>
+      <div class="feat-title">Instant GST Billing</div>
+      <p class="feat-desc">Generate a professional, GST-ready invoice the moment a job is done. Send it on WhatsApp in one tap. Track payment status without calling anyone.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">📍</div>
+      <div class="feat-title">Technician Tracking</div>
+      <p class="feat-desc">Know which technician is on which job. Your team updates job status from their own phone — you see it live on yours. No more "bhai kahan hai" calls.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">👥</div>
+      <div class="feat-title">Full Customer History</div>
+      <p class="feat-desc">Every visit, every complaint, every bill — stored against each customer. When they call next time, you already know everything about them.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon-wrap">📊</div>
+      <div class="feat-title">Daily Business Report</div>
+      <p class="feat-desc">See your revenue, jobs done, pending payments, and team performance every morning — in a simple one-screen dashboard. No spreadsheets needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section class="verticals" id="verticals">
+  <div class="section-header reveal">
+    <div class="section-tag">Who It's For</div>
+    <h2 class="section-title">Built for every type of service business</h2>
+    <p class="section-sub">One platform that works across all service sectors — ready to use from day one.</p>
+  </div>
+  <div class="verticals-grid">
+    <div class="vertical-card reveal">
+      <span class="vertical-emoji">❄️</span>
+      <div class="vertical-name">AC Servicing</div>
+      <p class="vertical-desc">Manage seasonal rushes, gas refills, preventive maintenance, and AMC renewals — without missing a single customer.</p>
+    </div>
+    <div class="vertical-card reveal">
+      <span class="vertical-emoji">🔥</span>
+      <div class="vertical-name">Fire Safety</div>
+      <p class="vertical-desc">Compliance checks, annual inspections, extinguisher refills — every deadline met, every certificate tracked on time.</p>
+    </div>
+    <div class="vertical-card reveal">
+      <span class="vertical-emoji">⚡</span>
+      <div class="vertical-name">Electrical Services</div>
+      <p class="vertical-desc">From wiring jobs to panel work — assign, track, bill, and follow up on every job with zero chaos.</p>
+    </div>
+    <div class="vertical-card reveal">
+      <span class="vertical-emoji">🔧</span>
+      <div class="vertical-name">Garage & Showrooms</div>
+      <p class="vertical-desc">Multiple showrooms? No problem. Service history, job cards, and reports — managed across all locations in one place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-header reveal">
+    <div class="section-tag">Simple Pricing</div>
+    <h2 class="section-title">Choose the plan that fits your team</h2>
+  </div>
+  <p class="pricing-note reveal">All plans include a <strong>14-day free trial</strong>. No credit card needed. Cancel anytime. No hidden charges.</p>
+
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <div class="price-card reveal">
+      <div class="plan-name">Starter Plan</div>
+      <div class="plan-tagline">Going digital for the first time</div>
+      <div class="plan-price-wrap">
+        <span class="plan-currency">₹</span>
+        <span class="plan-amount">599</span>
+        <span class="plan-per">/month</span>
+      </div>
+      <div class="plan-billing">Billed monthly · cancel anytime</div>
+      <div class="plan-team">👤 For up to 2 technicians</div>
+      <hr class="plan-divider">
+      <div class="plan-best-for">Who is this for?</div>
+      <div class="plan-best-desc">Small businesses doing 5–10 jobs per day who want to replace paper billing and WhatsApp job tracking with something better.</div>
+      <div class="plan-features-label">What's included</div>
+      <ul class="plan-features">
+        <li class="plan-feature"><div class="plan-check">✓</div>Create & assign digital job cards</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>GST-ready digital billing</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Customer database & history</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Mobile app for you & your team</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Basic daily summary report</li>
+      </ul>
+      <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="plan-btn">Chat on WhatsApp</a>
+    </div>
+
+    <!-- GROWTH (FEATURED) -->
+    <div class="price-card featured reveal">
+      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="plan-name">Growth Plan</div>
+      <div class="plan-tagline">Running a real team every day</div>
+      <div class="plan-price-wrap">
+        <span class="plan-currency" style="color:#FF9070">₹</span>
+        <span class="plan-amount">1,799</span>
+        <span class="plan-per" style="color:rgba(255,255,255,0.4)">/month</span>
+      </div>
+      <div class="plan-billing">Billed monthly · cancel anytime</div>
+      <div class="plan-team">👥 For up to 8 technicians</div>
+      <hr class="plan-divider">
+      <div class="plan-best-for">Who is this for?</div>
+      <div class="plan-best-desc">Businesses doing 15–30 jobs per day who need full control over their team, billing, AMC renewals, and payments in one place.</div>
+      <div class="plan-features-label">Everything in Starter, plus</div>
+      <ul class="plan-features">
+        <li class="plan-feature"><div class="plan-check">✓</div>AMC tracking & automatic renewal alerts</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Auto WhatsApp payment reminders</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Pending payment tracker</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Team performance reports</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Revenue & collection dashboard</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Priority customer support</li>
+      </ul>
+      <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="plan-btn">Chat on WhatsApp</a>
+    </div>
+
+    <!-- PRO -->
+    <div class="price-card reveal">
+      <div class="plan-name">Pro Plan</div>
+      <div class="plan-tagline">Multi-branch or large operation</div>
+      <div class="plan-price-wrap">
+        <span class="plan-currency">₹</span>
+        <span class="plan-amount">3,499</span>
+        <span class="plan-per">/month</span>
+      </div>
+      <div class="plan-billing">Billed monthly · cancel anytime</div>
+      <div class="plan-team">👨‍👩‍👧‍👦 Unlimited technicians</div>
+      <hr class="plan-divider">
+      <div class="plan-best-for">Who is this for?</div>
+      <div class="plan-best-desc">Established businesses with multiple branches or large teams who need advanced tracking, AI tools, and full-scale reporting.</div>
+      <div class="plan-features-label">Everything in Growth, plus</div>
+      <ul class="plan-features">
+        <li class="plan-feature"><div class="plan-check">✓</div>Unlimited technicians</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Multi-branch support</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Live GPS technician tracking</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>AI-powered service predictions</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Advanced analytics & data export</li>
+        <li class="plan-feature"><div class="plan-check">✓</div>Dedicated account manager</li>
+      </ul>
+      <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="plan-btn">Chat on WhatsApp</a>
+    </div>
+
+  </div>
+
+  <div class="pricing-footer reveal">
+    <p>🤝 <strong>Not sure which plan is right for you?</strong><br>Call us and we'll guide you honestly — no sales pressure, no confusing jargon. Just the right plan for your business size.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="section-tag reveal" style="position:relative;z-index:1;">Early Access Open — Gujarat</div>
+  <h2 class="cta-title reveal">
+    First <span class="orange">10 businesses</span> get founder pricing. Are you in?
+  </h2>
+  <p class="cta-sub reveal">
+    Chat with us on WhatsApp for a free 15-minute demo. No commitment, no pressure — just an honest conversation.
+  </p>
+  <div class="cta-buttons reveal">
+    <a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="btn-whatsapp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <a href="mailto:sales@webriseglobal.com?subject=Karigaar%20Demo%20Request&body=Hi%2C%20I%27m%20interested%20in%20Karigaar.%20Please%20get%20in%20touch." class="btn-email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Send an Email
+    </a>
+  </div>
+  <p class="cta-note reveal">No credit card. No commitment. Just a friendly conversation.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Karig<span>aa</span>r</div>
+  <div class="footer-links">
+    <a href="#how">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+  <div class="footer-copy">© 2025 Karigaar · Vadodara, Gujarat 🇮🇳<br><em style="opacity:0.6">"Apka Karigar, Ab Smart."</em></div>
+</footer>
+
+<script>
+// NAV
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// MOBILE MENU
+let menuOpen = false;
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    links.style.cssText = `
+      display:flex; flex-direction:column; position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      background:rgba(250,250,247,0.98); backdrop-filter:blur(20px);
+      padding:0; gap:0; z-index:99;
+      align-items:center; justify-content:center;
+    `;
+    links.querySelectorAll('a').forEach(a => {
+      a.style.cssText = 'font-size:1.3rem; color:#1A1A1A; font-weight:600; padding:12px 0;';
+      a.onclick = () => { menuOpen = false; links.style.display = 'none'; };
+    });
+  } else {
+    links.style.display = 'none';
+  }
+}
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
+  const idx = siblings.indexOf(el);
+  el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
+  observer.observe(el);
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/917574903180?text=Hi%2C%20I%27m%20interested%20in%20Karigaar%20for%20my%20service%20business.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <div class="whatsapp-float-tooltip">Chat with us!</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body>
+</html>
